@@ -43,7 +43,6 @@ int main(int argc, char** argv){
     
     //Ordenar o vetor de alunos.
 
-
     for(auto& aluno : alunos){
         aluno.imprimir();
     }

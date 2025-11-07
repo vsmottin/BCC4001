@@ -14,8 +14,14 @@
 // k=2 retorna o segundo maior elemento
 // k=....
 // k=n retorna o menor elemento
+using namespace std;
+
 int k_maior(std::vector<int> &v, int k){
-    return 0;
+    if(v.size() < k || k <= 0) return -1;
+    
+    sort(v.begin(), v.end());
+
+    return v[v.size() - k];
 }
 
 int main(int argc, char** argv){
@@ -24,11 +30,11 @@ int main(int argc, char** argv){
 
     auto v = gerar_vetor_aleatorio_sem_reps(n, 42);
 
+    int res = k_maior(v, k);
+
     #if DEBUG
     imprimir_vetor(v.data(), n);
     #endif
-
-    int res = k_maior(v, k);
 
     #if DEBUG
     std::cout << "O " << k << "-ésimo maior elemento do vetor é o " << res << "!\n";
