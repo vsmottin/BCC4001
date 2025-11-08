@@ -12,7 +12,22 @@ using namespace std;
 //menor_diferenca(v) = {4, 7}
 //O vetor de entrada não deve ser modificado.
 pair<int,int> menor_diferenca(vector<int> &v){
+    vector<int> s = v;
+    sort(s.begin(), s.end());
 
+    if(s.size() <= 1) return make_pair(-1, -1);
+
+    int menor_diferenca = s[1] - s[0];
+    pair<int, int> pares = make_pair(s[0], s[1]);
+    for (size_t i = 2; i < s.size(); i++){
+        if((s[i] - s[i - 1]) < menor_diferenca){
+            menor_diferenca = s[i] - s[i - 1];
+            pares.first = s[i - 1];
+            pares.second = s[i];
+        }
+    }
+
+    return pares;
 }
 
 int main(){

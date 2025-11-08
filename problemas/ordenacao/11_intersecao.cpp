@@ -21,6 +21,13 @@ using namespace std;
 
 vector<int> intersecao(vector<int> &v1, vector<int> &v2){
     vector<int> res;
+
+    for(int a : v1){
+        if (find(res.begin(), res.end(), a) == res.end() && find(v2.begin(), v2.end(), a) != res.end()) {
+            res.push_back(a);
+        }
+    }
+    
     return res;
 }
 
